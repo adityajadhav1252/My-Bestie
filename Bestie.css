@@ -1,0 +1,330 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/* Variables */
+:root {
+  --bg-color: #fff0f6;
+  --primary-color: #ff007f;
+  --secondary-color: #ff6f00;
+  --accent-color: #ffd700;
+  --text-color: #1a1a1a;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --border-radius: 20px;
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --transition: all 0.4s ease-in-out;
+}
+
+/* Typography */
+html { font-size: 16px; }
+@media (max-width: 768px) { html { font-size: 14px; } }
+@media (max-width: 480px) { html { font-size: 13px; } }
+
+/* Reset & Body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif, system-ui, Arial;
+  background: linear-gradient(135deg, #fff0f5, #fceff9, #e0f7fa);
+  background-size: 300% 300%;
+  animation: gradientFlow 12s ease infinite;
+  color: var(--text-color);
+  padding: 2rem;
+  overflow-x: hidden;
+  transition: var(--transition);
+}
+
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: var(--border-radius);
+  animation: fadeInUp 1s ease;
+}
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Tagline */
+.tagline {
+  font-style: italic;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Typewriter Text */
+#typewriter {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 1rem auto;
+  text-align: center;
+  max-width: 90%;
+  color: var(--secondary-color);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+}
+#typewriter::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin: 2rem 0;
+  transition: var(--transition);
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+.card h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Memory Text */
+#memoryText {
+  font-size: 1.2rem;
+  text-align: center;
+  font-style: italic;
+  color: #444;
+  transition: opacity 0.4s ease-in-out;
+}
+.fade {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+.fade.show {
+  opacity: 1;
+}
+
+/* Button */
+button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+button:hover {
+  background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+  transform: scale(1.05);
+}
+
+/* Hidden Hug Message */
+.hidden {
+  display: none;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  font-family: 'Dancing Script', cursive;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Gallery */
+.scroll-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+}
+.scroll-gallery img,
+.scroll-gallery video {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  scroll-snap-align: start;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.scroll-gallery img:hover,
+.scroll-gallery video:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes floatRotate {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(15deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .card {
+  background: #1e1e1e;
+  color: #f1f1f1;
+  border: 1px solid #333;
+}
+body.dark-mode button {
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Sections */
+.section-heading {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Photos */
+.photo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+.photo-card p.caption {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+}
+.photo-card.uniform img,
+.photo-card.uniform video {
+  width: 280px;
+  height: 370px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  scroll-snap-align: start;
+  transition: var(--transition);
+}
+.photo-card.uniform img:hover,
+.photo-card.uniform video:hover {
+  transform: scale(1.05);
+}
+
+/* Message Box */
+.message-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.message-box textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 150px;
+  resize: none;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.message-box textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
+}
+
+/* Floating Hearts */
+.hearts::before {
+  content: "💖 💕 💗";
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  animation: floatRotate 6s infinite ease-in-out;
+  z-index: 999;
+  display: inline-block;
+}
+
+iframe.spotify-embed {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+}
+
+/* Optional: hover effect */
+iframe.spotify-embed:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.playlist-wrapper {
+  padding: 1rem;
+  text-align: center;
+}
+
+.user-message-display {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #444;
+}
